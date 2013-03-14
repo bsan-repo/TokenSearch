@@ -9,6 +9,15 @@
 /* Begin PBXBuildFile section */
 		B22EEBFE16F1300A0008FDAF /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEBFD16F1300A0008FDAF /* main.cpp */; };
 		B22EEC0016F1300A0008FDAF /* TokenSearch.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = B22EEBFF16F1300A0008FDAF /* TokenSearch.1 */; };
+		B22EEC0816F13C7E0008FDAF /* File.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC0616F13C7E0008FDAF /* File.cpp */; };
+		B22EEC0B16F13DA50008FDAF /* Line.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC0916F13DA50008FDAF /* Line.cpp */; };
+		B22EEC0E16F17D980008FDAF /* Pattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC0C16F17D980008FDAF /* Pattern.cpp */; };
+		B22EEC1116F17DBD0008FDAF /* Segment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC0F16F17DBD0008FDAF /* Segment.cpp */; };
+		B22EEC1416F17DC90008FDAF /* LiteralText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC1216F17DC90008FDAF /* LiteralText.cpp */; };
+		B22EEC1716F17DD60008FDAF /* Token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC1516F17DD60008FDAF /* Token.cpp */; };
+		B22EEC1A16F17DFF0008FDAF /* SToken.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC1816F17DFF0008FDAF /* SToken.cpp */; };
+		B22EEC1E16F187960008FDAF /* PCREPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC1C16F187950008FDAF /* PCREPattern.cpp */; };
+		B22EEC2116F188AE0008FDAF /* StrHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC1F16F188AE0008FDAF /* StrHelper.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,6 +37,24 @@
 		B22EEBFA16F1300A0008FDAF /* TokenSearch */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = TokenSearch; sourceTree = BUILT_PRODUCTS_DIR; };
 		B22EEBFD16F1300A0008FDAF /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		B22EEBFF16F1300A0008FDAF /* TokenSearch.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = TokenSearch.1; sourceTree = "<group>"; };
+		B22EEC0616F13C7E0008FDAF /* File.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = File.cpp; sourceTree = "<group>"; };
+		B22EEC0716F13C7E0008FDAF /* File.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = File.h; sourceTree = "<group>"; };
+		B22EEC0916F13DA50008FDAF /* Line.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Line.cpp; sourceTree = "<group>"; };
+		B22EEC0A16F13DA50008FDAF /* Line.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Line.h; sourceTree = "<group>"; };
+		B22EEC0C16F17D980008FDAF /* Pattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pattern.cpp; sourceTree = "<group>"; };
+		B22EEC0D16F17D980008FDAF /* Pattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pattern.h; sourceTree = "<group>"; };
+		B22EEC0F16F17DBD0008FDAF /* Segment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Segment.cpp; sourceTree = "<group>"; };
+		B22EEC1016F17DBD0008FDAF /* Segment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Segment.h; sourceTree = "<group>"; };
+		B22EEC1216F17DC90008FDAF /* LiteralText.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LiteralText.cpp; sourceTree = "<group>"; };
+		B22EEC1316F17DC90008FDAF /* LiteralText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiteralText.h; sourceTree = "<group>"; };
+		B22EEC1516F17DD60008FDAF /* Token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Token.cpp; sourceTree = "<group>"; };
+		B22EEC1616F17DD60008FDAF /* Token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Token.h; sourceTree = "<group>"; };
+		B22EEC1816F17DFF0008FDAF /* SToken.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SToken.cpp; sourceTree = "<group>"; };
+		B22EEC1916F17DFF0008FDAF /* SToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SToken.h; sourceTree = "<group>"; };
+		B22EEC1C16F187950008FDAF /* PCREPattern.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PCREPattern.cpp; sourceTree = "<group>"; };
+		B22EEC1D16F187960008FDAF /* PCREPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCREPattern.h; sourceTree = "<group>"; };
+		B22EEC1F16F188AE0008FDAF /* StrHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StrHelper.cpp; sourceTree = "<group>"; };
+		B22EEC2016F188AE0008FDAF /* StrHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrHelper.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,7 +88,25 @@
 			isa = PBXGroup;
 			children = (
 				B22EEBFD16F1300A0008FDAF /* main.cpp */,
+				B22EEC0C16F17D980008FDAF /* Pattern.cpp */,
+				B22EEC0D16F17D980008FDAF /* Pattern.h */,
+				B22EEC1C16F187950008FDAF /* PCREPattern.cpp */,
+				B22EEC1D16F187960008FDAF /* PCREPattern.h */,
+				B22EEC0F16F17DBD0008FDAF /* Segment.cpp */,
+				B22EEC1016F17DBD0008FDAF /* Segment.h */,
+				B22EEC1216F17DC90008FDAF /* LiteralText.cpp */,
+				B22EEC1316F17DC90008FDAF /* LiteralText.h */,
+				B22EEC1516F17DD60008FDAF /* Token.cpp */,
+				B22EEC1616F17DD60008FDAF /* Token.h */,
+				B22EEC1816F17DFF0008FDAF /* SToken.cpp */,
+				B22EEC1916F17DFF0008FDAF /* SToken.h */,
 				B22EEBFF16F1300A0008FDAF /* TokenSearch.1 */,
+				B22EEC0616F13C7E0008FDAF /* File.cpp */,
+				B22EEC0716F13C7E0008FDAF /* File.h */,
+				B22EEC0916F13DA50008FDAF /* Line.cpp */,
+				B22EEC0A16F13DA50008FDAF /* Line.h */,
+				B22EEC1F16F188AE0008FDAF /* StrHelper.cpp */,
+				B22EEC2016F188AE0008FDAF /* StrHelper.h */,
 			);
 			path = TokenSearch;
 			sourceTree = "<group>";
@@ -118,6 +163,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B22EEBFE16F1300A0008FDAF /* main.cpp in Sources */,
+				B22EEC0816F13C7E0008FDAF /* File.cpp in Sources */,
+				B22EEC0B16F13DA50008FDAF /* Line.cpp in Sources */,
+				B22EEC0E16F17D980008FDAF /* Pattern.cpp in Sources */,
+				B22EEC1116F17DBD0008FDAF /* Segment.cpp in Sources */,
+				B22EEC1416F17DC90008FDAF /* LiteralText.cpp in Sources */,
+				B22EEC1716F17DD60008FDAF /* Token.cpp in Sources */,
+				B22EEC1A16F17DFF0008FDAF /* SToken.cpp in Sources */,
+				B22EEC1E16F187960008FDAF /* PCREPattern.cpp in Sources */,
+				B22EEC2116F188AE0008FDAF /* StrHelper.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,6 +192,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -151,8 +206,11 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
+				OTHER_CFLAGS = "";
 				SDKROOT = macosx;
 			};
 			name = Debug;
@@ -172,13 +230,17 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
+				LIBRARY_SEARCH_PATHS = "";
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				OTHER_CFLAGS = "";
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -186,6 +248,12 @@
 		B22EEC0416F1300A0008FDAF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/local/lib,
+					"-lpcre",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -193,6 +261,12 @@
 		B22EEC0516F1300A0008FDAF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				HEADER_SEARCH_PATHS = /usr/local/include;
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/local/lib,
+					"-lpcre",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -216,6 +290,7 @@
 				B22EEC0516F1300A0008FDAF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
