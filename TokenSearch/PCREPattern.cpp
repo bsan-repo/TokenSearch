@@ -63,7 +63,7 @@ void PCREPattern::constructRegEx(){
             case SegmentFactory::LITERALTEXT:{
                 strncpy(this->regEx+regExCurrentOffset, this->pattern+offset, length);
                 regExCurrentOffset += length;
-                printf("LITERALTEXT: %.*s    RE: %s\n", length, this->pattern+offset, this->regEx);
+                //printf("LITERALTEXT: %.*s    RE: %s\n", length, this->pattern+offset, this->regEx);
                 break;
             }
             case SegmentFactory::TOKEN:{
@@ -71,7 +71,7 @@ void PCREPattern::constructRegEx(){
                 int tokenRegExSize = (int)strlen(tokenRegEx);
                 strcpy(this->regEx+regExCurrentOffset, tokenRegEx);
                 regExCurrentOffset += tokenRegExSize;
-                printf("TOKEN: %.*s    RE: %s\n", length, this->pattern+offset, this->regEx);
+                //printf("TOKEN: %.*s    RE: %s\n", length, this->pattern+offset, this->regEx);
                 break;
             }
             case SegmentFactory::STOKEN:{
@@ -91,7 +91,7 @@ void PCREPattern::constructRegEx(){
                 int sTokenRegExSize = (int)strlen(sTokenRegEx);
                 strcpy(this->regEx+regExCurrentOffset, sTokenRegEx);
                 regExCurrentOffset += sTokenRegExSize;
-                printf("STOKEN: %.*s    RE: %s\n", length, this->pattern+offset, this->regEx);
+                //printf("STOKEN: %.*s    RE: %s\n", length, this->pattern+offset, this->regEx);
                 break;
             }
             case SegmentFactory::GTOKEN:{
@@ -100,11 +100,11 @@ void PCREPattern::constructRegEx(){
                 strcpy(this->regEx+regExCurrentOffset, gTokenRegEx);
                 regExCurrentOffset += gTokenRegExSize;
                 hasGToken = true;
-                printf("GTOKEN: %.*s    RE: %s\n", length, this->pattern+offset, this->regEx);
+                //printf("GTOKEN: %.*s    RE: %s\n", length, this->pattern+offset, this->regEx);
                 break;
             }
             default:
-                printf("DEFAULT: %.*s    RE: %s\n", length, this->pattern+offset, this->regEx);
+                //printf("DEFAULT: %.*s    RE: %s\n", length, this->pattern+offset, this->regEx);
                 break;
         }
         currentSegment += 1;
@@ -114,7 +114,7 @@ void PCREPattern::constructRegEx(){
         this->regEx[regExSize] = ')';
         this->regEx[regExSize+1] = NULL;
     }
-    printf("REG EX --- -- %s\n", this->regEx);
+    //printf("REG EX --- -- %s\n", this->regEx);
 }
 
 void PCREPattern::getRegEx(char** regExParam){

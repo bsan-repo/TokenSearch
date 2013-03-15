@@ -28,8 +28,8 @@ bool PCREProcessor::match(char* pattern, char* subject, int** results, int* resu
     char errorBuffer[200];
     std::list<int> resultsList;
     
-    printf("PATTERN: %s\n", pattern);
-    printf("SUBJECT: %s\n", subject);
+    //printf("PATTERN: %s\n", pattern);
+    //printf("SUBJECT: %s\n", subject);
     // ----------------------------------------------------------------------------
     
     subject_length = (int)strlen(subject);
@@ -148,9 +148,9 @@ bool PCREProcessor::match(char* pattern, char* subject, int** results, int* resu
          also any named substrings. */
         
         
-        char *substring_start = subject + ovector[0]; // DEV
-        int substring_length = ovector[1] - ovector[0]; // DEV
-        printf("0: %.*s\n", substring_length, substring_start); // DEV
+        //char *substring_start = subject + ovector[0]; // DEV
+        //int substring_length = ovector[1] - ovector[0]; // DEV
+        //printf("0: %.*s\n", substring_length, substring_start); // DEV
         
         // Copy first substring match
         int match_start = ovector[0];

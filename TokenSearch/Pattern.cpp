@@ -38,7 +38,7 @@ Segment* Pattern::extractToken(int offset, int length){
                 case 's': case 'S':
                     segment = SegmentFactory::getSegment(SegmentFactory::STOKEN);
                     ((SToken*)segment)->setSpaces(atoi(this->pattern+offset+i+1));
-                    printf("TOKEN__ spaces: %d\n", ((SToken*)segment)->getSpaces());
+                    //printf("TOKEN__ spaces: %d\n", ((SToken*)segment)->getSpaces());
                     break;
                 case 'G':
                     segment = SegmentFactory::getSegment(SegmentFactory::GTOKEN);
@@ -54,9 +54,9 @@ Segment* Pattern::extractToken(int offset, int length){
     segment->setLengt(length);
     
     
-    printf("TOKEN__ type: %d\n", segment->getType());
-    printf("TOKEN__ offset: %d\n", segment->getOffset());
-    printf("TOKEN__ length: %d\n", segment->getLength());
+    //printf("TOKEN__ type: %d\n", segment->getType());
+    //printf("TOKEN__ offset: %d\n", segment->getOffset());
+    //printf("TOKEN__ length: %d\n", segment->getLength());
     
     return segment;
 }
