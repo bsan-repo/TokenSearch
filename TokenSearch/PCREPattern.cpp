@@ -29,7 +29,7 @@ PCREPattern::PCREPattern(char* patternStr):Pattern(patternStr){
             if(literalTextBegin < matchOffset){
                 Segment* segment = SegmentFactory::getSegment(SegmentFactory::LITERALTEXT);
                 segment->setOffset(literalTextBegin);
-                segment->setLengt(matchLength);
+                segment->setLengt(matchOffset-literalTextBegin);
                 this->segments.push_back(segment);
                 //printf("LITERAL__  %.*s\n", matchLength-1, this->pattern+literalTextBegin);
             }
@@ -112,8 +112,7 @@ void PCREPattern::constructRegEx(){
     if(hasGToken == true){
         int regExSize = (int)strlen(this->regEx);
         this->regEx[regExSize] = ')';
-        this->regEx[regExSize+1] = '$';
-        this->regEx[regExSize+2] = NULL;
+        this->regEx[regExSize+1] = NULL;
     }
     printf("REG EX --- -- %s\n", this->regEx);
 }
