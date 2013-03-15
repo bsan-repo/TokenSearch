@@ -19,6 +19,7 @@ protected:
     std::list<TokenResult*> tokenResults;
 public:
     LineResult(int lineNumberParam);
+    void addTokenResult(TokenResult* tokenResultParam);
     inline int getLineNumber(){return lineNumber;}
     const std::list<TokenResult*> getTokenResults(){return tokenResults;}
     ~LineResult();

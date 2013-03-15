@@ -18,3 +18,6 @@ LineResult::~LineResult(){
         tokenResults.pop_front();
     }
 }
+void LineResult::addTokenResult(TokenResult* tokenResultParam){
+    this->tokenResults.push_back(tokenResultParam);
+}
