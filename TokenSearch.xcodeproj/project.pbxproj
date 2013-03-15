@@ -13,11 +13,18 @@
 		B22EEC0B16F13DA50008FDAF /* Line.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC0916F13DA50008FDAF /* Line.cpp */; };
 		B22EEC0E16F17D980008FDAF /* Pattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC0C16F17D980008FDAF /* Pattern.cpp */; };
 		B22EEC1116F17DBD0008FDAF /* Segment.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC0F16F17DBD0008FDAF /* Segment.cpp */; };
-		B22EEC1416F17DC90008FDAF /* LiteralText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC1216F17DC90008FDAF /* LiteralText.cpp */; };
 		B22EEC1716F17DD60008FDAF /* Token.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC1516F17DD60008FDAF /* Token.cpp */; };
 		B22EEC1A16F17DFF0008FDAF /* SToken.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC1816F17DFF0008FDAF /* SToken.cpp */; };
 		B22EEC1E16F187960008FDAF /* PCREPattern.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC1C16F187950008FDAF /* PCREPattern.cpp */; };
 		B22EEC2116F188AE0008FDAF /* StrHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC1F16F188AE0008FDAF /* StrHelper.cpp */; };
+		B22EEC2516F198B50008FDAF /* RegExProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC2316F198B50008FDAF /* RegExProcessor.cpp */; };
+		B22EEC2816F198CA0008FDAF /* PCREProcessor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC2616F198CA0008FDAF /* PCREProcessor.cpp */; };
+		B22EEC2B16F226670008FDAF /* SegmentFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC2916F226670008FDAF /* SegmentFactory.cpp */; };
+		B22EEC2E16F22FFB0008FDAF /* LiteralText.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC2C16F22FFB0008FDAF /* LiteralText.cpp */; };
+		B22EEC3C16F256190008FDAF /* GToken.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC3A16F256190008FDAF /* GToken.cpp */; };
+		B22EEC4016F2D6C10008FDAF /* Search.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC3E16F2D6C10008FDAF /* Search.cpp */; };
+		B22EEC4316F2D8C80008FDAF /* LineResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC4116F2D8C80008FDAF /* LineResult.cpp */; };
+		B22EEC4616F2D8E00008FDAF /* TokenResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC4416F2D8E00008FDAF /* TokenResult.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -45,8 +52,6 @@
 		B22EEC0D16F17D980008FDAF /* Pattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pattern.h; sourceTree = "<group>"; };
 		B22EEC0F16F17DBD0008FDAF /* Segment.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Segment.cpp; sourceTree = "<group>"; };
 		B22EEC1016F17DBD0008FDAF /* Segment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Segment.h; sourceTree = "<group>"; };
-		B22EEC1216F17DC90008FDAF /* LiteralText.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LiteralText.cpp; sourceTree = "<group>"; };
-		B22EEC1316F17DC90008FDAF /* LiteralText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiteralText.h; sourceTree = "<group>"; };
 		B22EEC1516F17DD60008FDAF /* Token.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Token.cpp; sourceTree = "<group>"; };
 		B22EEC1616F17DD60008FDAF /* Token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Token.h; sourceTree = "<group>"; };
 		B22EEC1816F17DFF0008FDAF /* SToken.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SToken.cpp; sourceTree = "<group>"; };
@@ -55,6 +60,22 @@
 		B22EEC1D16F187960008FDAF /* PCREPattern.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCREPattern.h; sourceTree = "<group>"; };
 		B22EEC1F16F188AE0008FDAF /* StrHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StrHelper.cpp; sourceTree = "<group>"; };
 		B22EEC2016F188AE0008FDAF /* StrHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StrHelper.h; sourceTree = "<group>"; };
+		B22EEC2316F198B50008FDAF /* RegExProcessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RegExProcessor.cpp; sourceTree = "<group>"; };
+		B22EEC2416F198B50008FDAF /* RegExProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RegExProcessor.h; sourceTree = "<group>"; };
+		B22EEC2616F198CA0008FDAF /* PCREProcessor.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PCREProcessor.cpp; sourceTree = "<group>"; };
+		B22EEC2716F198CA0008FDAF /* PCREProcessor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PCREProcessor.h; sourceTree = "<group>"; };
+		B22EEC2916F226670008FDAF /* SegmentFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SegmentFactory.cpp; sourceTree = "<group>"; };
+		B22EEC2A16F226670008FDAF /* SegmentFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SegmentFactory.h; sourceTree = "<group>"; };
+		B22EEC2C16F22FFB0008FDAF /* LiteralText.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LiteralText.cpp; sourceTree = "<group>"; };
+		B22EEC2D16F22FFB0008FDAF /* LiteralText.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LiteralText.h; sourceTree = "<group>"; };
+		B22EEC3A16F256190008FDAF /* GToken.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GToken.cpp; sourceTree = "<group>"; };
+		B22EEC3B16F256190008FDAF /* GToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GToken.h; sourceTree = "<group>"; };
+		B22EEC3E16F2D6C10008FDAF /* Search.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Search.cpp; sourceTree = "<group>"; };
+		B22EEC3F16F2D6C10008FDAF /* Search.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Search.h; sourceTree = "<group>"; };
+		B22EEC4116F2D8C80008FDAF /* LineResult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LineResult.cpp; sourceTree = "<group>"; };
+		B22EEC4216F2D8C80008FDAF /* LineResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineResult.h; sourceTree = "<group>"; };
+		B22EEC4416F2D8E00008FDAF /* TokenResult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TokenResult.cpp; sourceTree = "<group>"; };
+		B22EEC4516F2D8E00008FDAF /* TokenResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenResult.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,8 +92,8 @@
 		B22EEBF116F1300A0008FDAF = {
 			isa = PBXGroup;
 			children = (
-				B22EEBFC16F1300A0008FDAF /* TokenSearch */,
 				B22EEBFB16F1300A0008FDAF /* Products */,
+				B22EEBFC16F1300A0008FDAF /* TokenSearch */,
 			);
 			sourceTree = "<group>";
 		};
@@ -87,28 +108,90 @@
 		B22EEBFC16F1300A0008FDAF /* TokenSearch */ = {
 			isa = PBXGroup;
 			children = (
+				B22EEC3D16F2D6B40008FDAF /* search */,
+				B22EEC3316F2311F0008FDAF /* helper */,
+				B22EEC3216F231100008FDAF /* file */,
+				B22EEC3116F230E40008FDAF /* processor */,
+				B22EEC3016F230C60008FDAF /* pattern */,
+				B22EEC2F16F230B00008FDAF /* segment */,
 				B22EEBFD16F1300A0008FDAF /* main.cpp */,
+				B22EEBFF16F1300A0008FDAF /* TokenSearch.1 */,
+			);
+			path = TokenSearch;
+			sourceTree = "<group>";
+		};
+		B22EEC2F16F230B00008FDAF /* segment */ = {
+			isa = PBXGroup;
+			children = (
+				B22EEC3A16F256190008FDAF /* GToken.cpp */,
+				B22EEC3B16F256190008FDAF /* GToken.h */,
+				B22EEC2C16F22FFB0008FDAF /* LiteralText.cpp */,
+				B22EEC2D16F22FFB0008FDAF /* LiteralText.h */,
+				B22EEC0F16F17DBD0008FDAF /* Segment.cpp */,
+				B22EEC1016F17DBD0008FDAF /* Segment.h */,
+				B22EEC2916F226670008FDAF /* SegmentFactory.cpp */,
+				B22EEC2A16F226670008FDAF /* SegmentFactory.h */,
+				B22EEC1816F17DFF0008FDAF /* SToken.cpp */,
+				B22EEC1916F17DFF0008FDAF /* SToken.h */,
+				B22EEC1516F17DD60008FDAF /* Token.cpp */,
+				B22EEC1616F17DD60008FDAF /* Token.h */,
+			);
+			name = segment;
+			sourceTree = "<group>";
+		};
+		B22EEC3016F230C60008FDAF /* pattern */ = {
+			isa = PBXGroup;
+			children = (
 				B22EEC0C16F17D980008FDAF /* Pattern.cpp */,
 				B22EEC0D16F17D980008FDAF /* Pattern.h */,
 				B22EEC1C16F187950008FDAF /* PCREPattern.cpp */,
 				B22EEC1D16F187960008FDAF /* PCREPattern.h */,
-				B22EEC0F16F17DBD0008FDAF /* Segment.cpp */,
-				B22EEC1016F17DBD0008FDAF /* Segment.h */,
-				B22EEC1216F17DC90008FDAF /* LiteralText.cpp */,
-				B22EEC1316F17DC90008FDAF /* LiteralText.h */,
-				B22EEC1516F17DD60008FDAF /* Token.cpp */,
-				B22EEC1616F17DD60008FDAF /* Token.h */,
-				B22EEC1816F17DFF0008FDAF /* SToken.cpp */,
-				B22EEC1916F17DFF0008FDAF /* SToken.h */,
-				B22EEBFF16F1300A0008FDAF /* TokenSearch.1 */,
+			);
+			name = pattern;
+			sourceTree = "<group>";
+		};
+		B22EEC3116F230E40008FDAF /* processor */ = {
+			isa = PBXGroup;
+			children = (
+				B22EEC2616F198CA0008FDAF /* PCREProcessor.cpp */,
+				B22EEC2716F198CA0008FDAF /* PCREProcessor.h */,
+				B22EEC2316F198B50008FDAF /* RegExProcessor.cpp */,
+				B22EEC2416F198B50008FDAF /* RegExProcessor.h */,
+			);
+			name = processor;
+			sourceTree = "<group>";
+		};
+		B22EEC3216F231100008FDAF /* file */ = {
+			isa = PBXGroup;
+			children = (
 				B22EEC0616F13C7E0008FDAF /* File.cpp */,
 				B22EEC0716F13C7E0008FDAF /* File.h */,
 				B22EEC0916F13DA50008FDAF /* Line.cpp */,
 				B22EEC0A16F13DA50008FDAF /* Line.h */,
+			);
+			name = file;
+			sourceTree = "<group>";
+		};
+		B22EEC3316F2311F0008FDAF /* helper */ = {
+			isa = PBXGroup;
+			children = (
 				B22EEC1F16F188AE0008FDAF /* StrHelper.cpp */,
 				B22EEC2016F188AE0008FDAF /* StrHelper.h */,
 			);
-			path = TokenSearch;
+			name = helper;
+			sourceTree = "<group>";
+		};
+		B22EEC3D16F2D6B40008FDAF /* search */ = {
+			isa = PBXGroup;
+			children = (
+				B22EEC3E16F2D6C10008FDAF /* Search.cpp */,
+				B22EEC3F16F2D6C10008FDAF /* Search.h */,
+				B22EEC4116F2D8C80008FDAF /* LineResult.cpp */,
+				B22EEC4216F2D8C80008FDAF /* LineResult.h */,
+				B22EEC4416F2D8E00008FDAF /* TokenResult.cpp */,
+				B22EEC4516F2D8E00008FDAF /* TokenResult.h */,
+			);
+			name = search;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -167,11 +250,18 @@
 				B22EEC0B16F13DA50008FDAF /* Line.cpp in Sources */,
 				B22EEC0E16F17D980008FDAF /* Pattern.cpp in Sources */,
 				B22EEC1116F17DBD0008FDAF /* Segment.cpp in Sources */,
-				B22EEC1416F17DC90008FDAF /* LiteralText.cpp in Sources */,
 				B22EEC1716F17DD60008FDAF /* Token.cpp in Sources */,
 				B22EEC1A16F17DFF0008FDAF /* SToken.cpp in Sources */,
 				B22EEC1E16F187960008FDAF /* PCREPattern.cpp in Sources */,
 				B22EEC2116F188AE0008FDAF /* StrHelper.cpp in Sources */,
+				B22EEC2516F198B50008FDAF /* RegExProcessor.cpp in Sources */,
+				B22EEC2816F198CA0008FDAF /* PCREProcessor.cpp in Sources */,
+				B22EEC2B16F226670008FDAF /* SegmentFactory.cpp in Sources */,
+				B22EEC2E16F22FFB0008FDAF /* LiteralText.cpp in Sources */,
+				B22EEC3C16F256190008FDAF /* GToken.cpp in Sources */,
+				B22EEC4016F2D6C10008FDAF /* Search.cpp in Sources */,
+				B22EEC4316F2D8C80008FDAF /* LineResult.cpp in Sources */,
+				B22EEC4616F2D8E00008FDAF /* TokenResult.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -206,8 +296,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "";
-				LIBRARY_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = /usr/local/lib;
+				LD_DYLIB_INSTALL_NAME = "-lpcre";
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
 				OTHER_CFLAGS = "";
@@ -237,8 +328,9 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				HEADER_SEARCH_PATHS = "";
-				LIBRARY_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = /usr/local/lib;
+				LD_DYLIB_INSTALL_NAME = "-lpcre";
+				LIBRARY_SEARCH_PATHS = /usr/local/lib;
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				OTHER_CFLAGS = "";
 				SDKROOT = macosx;
