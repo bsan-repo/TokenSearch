@@ -12,7 +12,7 @@
 #include <iostream>
 #include "RegExProcessor.h"
 
-class PCREProcessor : public RegExProcessor{
+class PCREProcessor{
 public:
     bool match(char* pattern, char* subject, int** results, int* resultsSize, char** errorMsg, bool firstOnly=false);
 };

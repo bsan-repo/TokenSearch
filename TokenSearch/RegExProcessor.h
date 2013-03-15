@@ -11,13 +11,16 @@
 
 #include <iostream>
 
+// TODO Inherit from this class PCRE implementation - Check
+// problem multiple definitions of match for PCRE class at linking
+// Change in search class
 class RegExProcessor{
 public:
     // Match the pattern over the subject and save the results to 'results' in pairs,
     // offset-length.
     // Return false if it encounters an error while executing the search,
     // the msg is saved to 'errorMsg'.
-    virtual bool match(char* pattern, char* subject, int** results, int* resultsSize, char** errorMsg, bool firstOnly=false) = 0;
+    bool match(char* pattern, char* subject, int** results, int* resultsSize, char** errorMsg, bool firstOnly=false){return false;};
 };
 
 #endif /* defined(__TokenSearch__RegExProcessor__) */
