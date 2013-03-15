@@ -23,25 +23,32 @@ PCREPattern::PCREPattern(char* patternStr):Pattern(patternStr){
     if(execOK == true){
         // Create the list of segments for the pattern
         int literalTextBegin = 0;
-        for(int i = 0; i<resultsSize; i+=2){
-            int matchOffset = results[i];
-            int matchLength = results[i+1];
-            if(literalTextBegin < matchOffset){
-                Segment* segment = SegmentFactory::getSegment(SegmentFactory::LITERALTEXT);
-                segment->setOffset(literalTextBegin);
-                segment->setLengt(matchOffset-literalTextBegin);
-                this->segments.push_back(segment);
-                //printf("LITERAL__  %.*s\n", matchLength-1, this->pattern+literalTextBegin);
-            }
-            //printf("TOKEN__  %.*s  - offset: %d    length: %d, \n", matchLength, this->pattern+matchOffset, matchOffset, matchLength);
-            this->segments.push_back(this->extractToken(matchOffset, matchLength));
-            literalTextBegin = matchOffset + matchLength;
-        }
         
+        if(resultsSize>0){
+            for(int i = 0; i<resultsSize; i+=2){
+                int matchOffset = results[i];
+                int matchLength = results[i+1];
+                if(literalTextBegin < matchOffset){
+                    Segment* segment = SegmentFactory::getSegment(SegmentFactory::LITERALTEXT);
+                    segment->setOffset(literalTextBegin);
+                    segment->setLength(matchOffset-literalTextBegin);
+                    this->segments.push_back(segment);
+                }
+                this->segments.push_back(this->extractToken(matchOffset, matchLength));
+                literalTextBegin = matchOffset + matchLength;
+            }
+        }else{
+            // No tokens were found, copy the whole literal text as Reg Ex
+            Segment* segment = SegmentFactory::getSegment(SegmentFactory::LITERALTEXT);
+            segment->setOffset(0);
+            segment->setLength((int)strlen(patternStr));
+            this->segments.push_back(segment);
+
+        }
         // Create the regular expression from the initial pattern
         this->constructRegEx();
     }else{
-        //printf("ERROR: %s\n", errorMsg); // DEV
+        printf("ERROR: %s\n", errorMsg); // DEV
     }
     
     if(results != NULL){delete[] results;}
