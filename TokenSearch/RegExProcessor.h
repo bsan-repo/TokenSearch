@@ -17,7 +17,7 @@ public:
     // offset-length.
     // Return false if it encounters an error while executing the search,
     // the msg is saved to 'errorMsg'.
-    virtual bool match(char* pattern, char* subject, int** results, int* resultsSize, char** errorMsg) = 0;
+    virtual bool match(char* pattern, char* subject, int** results, int* resultsSize, char** errorMsg, bool firstOnly=false) = 0;
 };
 
 #endif /* defined(__TokenSearch__RegExProcessor__) */

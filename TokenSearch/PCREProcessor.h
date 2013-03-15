@@ -13,7 +13,7 @@
 
 class PCREProcessor{
 public:
-    bool match(char* pattern, char* subject, int** results, int* resultsSize, char** errorMsg);
+    bool match(char* pattern, char* subject, int** results, int* resultsSize, char** errorMsg, bool firstOnly=false);
 };
 
 #endif /* defined(__TokenSearch__PCREProcessor__) */

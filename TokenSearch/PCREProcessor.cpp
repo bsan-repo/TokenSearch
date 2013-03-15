@@ -11,10 +11,11 @@
 #include <pcre.h>
 #include <list>
 
+// Modified version of pcredemo.c from the PCRE code. See details bellow.
 
 #define OVECCOUNT 30 
 
-bool PCREProcessor::match(char* pattern, char* subject, int** results, int* resultsSize, char** errorMsg){
+bool PCREProcessor::match(char* pattern, char* subject, int** results, int* resultsSize, char** errorMsg, bool firstOnly){
     pcre *re;
     const char *error;
     unsigned int option_bits;
@@ -157,6 +158,10 @@ bool PCREProcessor::match(char* pattern, char* subject, int** results, int* resu
         if(match_length > 0){
             resultsList.push_back(match_start);
             resultsList.push_back(match_length);
+            // end if only the first result is needed
+            if(firstOnly == true){
+                break;
+            }
         }
         
         start_offset = ovector[1];
@@ -181,3 +186,67 @@ bool PCREProcessor::match(char* pattern, char* subject, int** results, int* resu
     pcre_free(re);
     return true;
 }
+
+/*
+ 
+PCRE LICENCE
+------------
+
+PCRE is a library of functions to support regular expressions whose syntax
+and semantics are as close as possible to those of the Perl 5 language.
+
+Release 8 of PCRE is distributed under the terms of the "BSD" licence, as
+specified below. The documentation for PCRE, supplied in the "doc"
+directory, is distributed under the same terms as the software itself.
+
+The basic library functions are written in C and are freestanding. Also
+included in the distribution is a set of C++ wrapper functions, and a
+just-in-time compiler that can be used to optimize pattern matching. These
+are both optional features that can be omitted when the library is built.
+
+
+THE BASIC LIBRARY FUNCTIONS
+---------------------------
+
+Written by:       Philip Hazel
+Email local part: ph10
+Email domain:     cam.ac.uk
+
+University of Cambridge Computing Service,
+Cambridge, England.
+
+Copyright (c) 1997-2011 University of Cambridge
+All rights reserved.
+
+
+PCRE JUST-IN-TIME COMPILATION SUPPORT
+-------------------------------------
+
+Written by:       Zoltan Herczeg
+Email local part: hzmester
+Emain domain:     freemail.hu
+
+Copyright(c) 2010-2011 Zoltan Herczeg
+All rights reserved.
+
+
+STACK-LESS JUST-IN-TIME COMPILER
+--------------------------------
+
+Written by:       Zoltan Herczeg
+Email local part: hzmester
+Emain domain:     freemail.hu
+
+Copyright(c) 2009-2011 Zoltan Herczeg
+All rights reserved.
+
+
+THE C++ WRAPPER FUNCTIONS
+-------------------------
+
+Contributed by:   Google Inc.
+
+Copyright (c) 2007-2011, Google Inc.
+All rights reserved.
+
+*/
