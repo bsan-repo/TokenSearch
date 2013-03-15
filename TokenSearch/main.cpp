@@ -17,7 +17,8 @@
 int main(int argc, const char * argv[])
 {
     // insert code here...
-    std::cout << "Token search utility - v1\n";
+    std::cout << "Token search utility - v1\n\n";
+    
     
     char *line = new char[1000];
     char* patternStr = {(char*)"bar %{0G} foo %{1}"};//"foo %{0} is a %{1S0}"};
@@ -26,6 +27,11 @@ int main(int argc, const char * argv[])
     Pattern* pattern = new PCREPattern(patternStr);
     PCREProcessor processor;
     Search search(file, pattern, &processor);
+    
+    std::cout << "Pattern: "<<patternStr;
+    char* regEx = NULL;
+    pattern->getRegEx(&regEx);
+    std::cout << "Pattern: "<<regEx;
     
     FILE *testFile;
     if((testFile = fopen("/Users/6opC4h4e3/Desktop/testFile.txt", "r"))== NULL){
@@ -39,7 +45,7 @@ int main(int argc, const char * argv[])
                 line[dataCounter] = NULL;
                 dataCounter = 0;
                 file->addLine(line);
-                printf("_____> %s  : %d", line, search.isPatternInLine(line));
+                printf("> %s  : %d\n", line, search.isPatternInLine(line));
             }else{
                 line[dataCounter] = c;
                 dataCounter++;
@@ -48,7 +54,7 @@ int main(int argc, const char * argv[])
         line[dataCounter-1] = NULL;
         dataCounter = 0;
         file->addLine(line);
-        printf("_____> %s  : %d\n", line, search.isPatternInLine(line));
+        printf("_____> %s  : %d \n\n", line, search.isPatternInLine(line));
     }
     
     /*
