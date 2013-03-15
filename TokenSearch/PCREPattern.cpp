@@ -117,6 +117,22 @@ void PCREPattern::constructRegEx(){
     printf("REG EX --- -- %s\n", this->regEx);
 }
 
+
+bool PCREPattern::isPatternInLine(char* line){
+    PCREProcessor regExProcessor;
+    int* results = NULL;
+    int resultsSize = 0;
+    char* errorMsg = NULL;
+    
+    // Extract the items using RegExs
+    bool execOK = regExProcessor.match(this->regEx, line, &results, &resultsSize, &errorMsg, true);
+    
+    if(execOK == true && resultsSize>0){
+        return true;
+    }
+    return false;
+}
+
 void PCREPattern::getRegEx(char** regExParam){
     StrHelper::copyString(regExParam, this->regEx);
 }
