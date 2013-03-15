@@ -13,14 +13,12 @@
 
 class TokenResult{
 protected:
-    int character;
     int index;
     char* result;
 public:
-    TokenResult(int charParam, int indexParam);
+    TokenResult(int indexParam, const char* resultParam);
     inline int getIndex(){return index;}
     void getResult(char** resultCopy);
-    void setResult(const char* resultParam);
     ~TokenResult();
 };
 
