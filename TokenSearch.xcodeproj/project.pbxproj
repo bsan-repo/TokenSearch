@@ -25,6 +25,7 @@
 		B22EEC4016F2D6C10008FDAF /* Search.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC3E16F2D6C10008FDAF /* Search.cpp */; };
 		B22EEC4316F2D8C80008FDAF /* LineResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC4116F2D8C80008FDAF /* LineResult.cpp */; };
 		B22EEC4616F2D8E00008FDAF /* TokenResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B22EEC4416F2D8E00008FDAF /* TokenResult.cpp */; };
+		B29FB89316F37EDF00E28927 /* StdPrintResultsSearch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = B29FB89116F37EDF00E28927 /* StdPrintResultsSearch.cpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -76,6 +77,8 @@
 		B22EEC4216F2D8C80008FDAF /* LineResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LineResult.h; sourceTree = "<group>"; };
 		B22EEC4416F2D8E00008FDAF /* TokenResult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TokenResult.cpp; sourceTree = "<group>"; };
 		B22EEC4516F2D8E00008FDAF /* TokenResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TokenResult.h; sourceTree = "<group>"; };
+		B29FB89116F37EDF00E28927 /* StdPrintResultsSearch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = StdPrintResultsSearch.cpp; sourceTree = "<group>"; };
+		B29FB89216F37EDF00E28927 /* StdPrintResultsSearch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StdPrintResultsSearch.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +111,7 @@
 		B22EEBFC16F1300A0008FDAF /* TokenSearch */ = {
 			isa = PBXGroup;
 			children = (
+				B29FB89016F37EC200E28927 /* visualize */,
 				B22EEC3D16F2D6B40008FDAF /* search */,
 				B22EEC3316F2311F0008FDAF /* helper */,
 				B22EEC3216F231100008FDAF /* file */,
@@ -194,6 +198,15 @@
 			name = search;
 			sourceTree = "<group>";
 		};
+		B29FB89016F37EC200E28927 /* visualize */ = {
+			isa = PBXGroup;
+			children = (
+				B29FB89116F37EDF00E28927 /* StdPrintResultsSearch.cpp */,
+				B29FB89216F37EDF00E28927 /* StdPrintResultsSearch.h */,
+			);
+			name = visualize;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -262,6 +275,7 @@
 				B22EEC4016F2D6C10008FDAF /* Search.cpp in Sources */,
 				B22EEC4316F2D8C80008FDAF /* LineResult.cpp in Sources */,
 				B22EEC4616F2D8E00008FDAF /* TokenResult.cpp in Sources */,
+				B29FB89316F37EDF00E28927 /* StdPrintResultsSearch.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
