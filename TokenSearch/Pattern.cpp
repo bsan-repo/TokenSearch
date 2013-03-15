@@ -51,7 +51,7 @@ Segment* Pattern::extractToken(int offset, int length){
         }
     }
     segment->setOffset(offset);
-    segment->setLengt(length);
+    segment->setLength(length);
     
     
     //printf("TOKEN__ type: %d\n", segment->getType());
