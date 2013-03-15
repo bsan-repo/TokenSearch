@@ -18,7 +18,6 @@ protected:
 public:
     PCREPattern(char* patternStr);
     void getRegEx(char** regEx);
-    bool isPatternInLine(char* line);
 };
 
 #endif /* defined(__TokenSearch__PCREPattern__) */

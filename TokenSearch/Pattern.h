@@ -24,7 +24,6 @@ protected:
 public:
     Pattern(char* patternStr);
     virtual void getRegEx(char** regEx) = 0;
-    virtual bool isPatternInLine(char* line) = 0;
 };
 
 #endif /* defined(__TokenSearch__Pattern__) */
