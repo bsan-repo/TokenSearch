@@ -24,7 +24,7 @@ public:
     inline int getOffset(){return offset;}
     inline void setOffset(int offsetParam){this->offset = offsetParam;};
     inline int getLength(){return length;}
-    inline void setLengt(int lengthParam){this->length = lengthParam;};
+    inline void setLength(int lengthParam){this->length = lengthParam;};
     
     static const int SEGMENT_TYPE = 0;
 };
