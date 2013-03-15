@@ -8,10 +8,12 @@
 
 #include "Search.h"
 
-Search::Search(File* file, Pattern* pattern, RegExProcessor* processor){
+Search::Search(File* file, Pattern* pattern, PCREProcessor* processor){
     this->file = file;
     this->pattern = pattern;
     this->processor = processor;
+    
+    
 }
 
 Search::~Search(){

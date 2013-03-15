@@ -14,16 +14,16 @@
 #include "File.h"
 #include "Pattern.h"
 #include "LineResult.h"
-#include "RegExProcessor.h"
+#include "PCREProcessor.h"
 
 class Search{
 protected:
     File* file;
     Pattern* pattern;
-    RegExProcessor* processor;
+    PCREProcessor* processor;
     std::list<LineResult*> lineResults;
 public:
-    Search(File* file, Pattern* pattern, RegExProcessor* processor);
+    Search(File* file, Pattern* pattern, PCREProcessor* processor);
     const std::list<LineResult*> getLineResults(){return lineResults;}
     bool isPatternInLine(char* line);
     ~Search();
