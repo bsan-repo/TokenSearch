@@ -8,6 +8,8 @@
 
 #include "StrHelper.h"
 
+// It's the responsability of the invoker to release memory before and after
+// calling this method
 void StrHelper::copyString(char** copy, const char* toCopy){
     int size = (int)strlen(toCopy);
     *copy = new char[size];
