@@ -15,10 +15,13 @@
 class Token : public Segment{
 protected:
     int index;
+    char* regEx;
 public:
     Token();
     inline int getIndex(){return index;}
     inline void setIndex(int indexParam){this->index = indexParam;}
+    void getRegEx(char** regExCopy);
+    void setRegEx(const char* regExParam);
     
     static const int TOKEN_TYPE = 2;
 };
