@@ -14,13 +14,16 @@
 #include "Segment.h"
 
 class Pattern{
-private:
+protected:
     char* pattern;
     char* regEx;
     std::list<Segment*> segments;
+    
+    Segment* extractToken(int offset, int length);
+    virtual void constructRegEx() = 0;
 public:
     Pattern(char* patternStr);
-    virtual void getRegEx() = 0;
+    virtual void getRegEx(char** regEx) = 0;
 };
 
 #endif /* defined(__TokenSearch__Pattern__) */

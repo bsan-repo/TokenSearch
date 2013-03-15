@@ -12,6 +12,7 @@
 #include <iostream>
 
 class StrHelper{
+public:
     static void copyString(char** copy, const char* toCopy);
 };
 

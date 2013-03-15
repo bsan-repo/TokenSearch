@@ -9,9 +9,6 @@
 #include "SToken.h"
 
 SToken::SToken(){
-    this->typeSegment = SToken::STOKEN_TYPE;
-}
-
-void SToken::getSegmentCopy(char** segmentCopy){
-    this->getSegmentCopyBase(segmentCopy);
+    this->type = SToken::STOKEN_TYPE;
+    this->spaces = 0;
 }

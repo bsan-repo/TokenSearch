@@ -9,7 +9,7 @@
 
 #include <iostream>
 #include "File.h"
-#include "Pattern.h"
+#include "PCREPattern.h"
 
 
 int main(int argc, const char * argv[])
@@ -18,10 +18,10 @@ int main(int argc, const char * argv[])
     std::cout << "Token search utility - v1\n";
     
     char *line = new char[1000];
-    char* patternStr = "foo %{0} is a %{1S0}";
+    char* patternStr = {(char*)"bar %{0G} foo %{1}"};//"foo %{0} is a %{1S0}"};
     
     File* file = new File();
-    Pattern* pattern = new Pattern(patternStr);
+    Pattern* pattern = new PCREPattern(patternStr);
     
     FILE *testFile;
     if((testFile = fopen("/Users/6opC4h4e3/Desktop/testFile.txt", "r"))== NULL){

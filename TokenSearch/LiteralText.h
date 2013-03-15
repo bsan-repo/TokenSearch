@@ -15,7 +15,6 @@
 class LiteralText : public Segment{
 public:
     LiteralText();
-    void getSegmentCopy(char** segmentCopy);
-    const static uint LITERAL_TEXT_TYPE = 1;
+    const static int LITERALTEXT_TYPE = 1;
 };
 #endif /* defined(__TokenSearch__LiteralText__) */

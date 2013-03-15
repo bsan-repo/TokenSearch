@@ -28,7 +28,7 @@ void File::cleanFile(){
 }
 
 File::~File(){
-    for (auto it = lines.begin(); it != lines.end(); it++){
+    for (std::list<Line*>::iterator it = lines.begin(); it != lines.end(); it++){
         delete *it;
         lines.pop_front();
     }

@@ -11,13 +11,22 @@
 
 #include <iostream>
 
+
+
 class Segment{
 protected:
-    char* segmentStr;
-    int typeSegment;
-    void getSegmentCopyBase(char** segmentCopy);
+    int type;
+    int offset;
+    int length;
 public:
-    virtual void getSegmentCopy(char** segmentCopy) = 0;
+    Segment();
+    inline int getType(){return type;}
+    inline int getOffset(){return offset;}
+    inline void setOffset(int offsetParam){this->offset = offsetParam;};
+    inline int getLength(){return length;}
+    inline void setLengt(int lengthParam){this->length = lengthParam;};
+    
+    static const int SEGMENT_TYPE = 0;
 };
 
 #endif /* defined(__TokenSearch__Segment__) */

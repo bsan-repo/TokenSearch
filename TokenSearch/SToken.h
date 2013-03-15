@@ -10,13 +10,17 @@
 #define __TokenSearch__SToken__
 
 #include <iostream>
-#include "Segment.h"
+#include "Token.h"
 
-class SToken : public Segment{
+class SToken : public Token{
+protected:
+    int spaces;
 public:
     SToken();
-    void getSegmentCopy(char** segmentCopy);
-    const static uint STOKEN_TYPE = 3;
+    inline int getSpaces(){return spaces;}
+    inline void setSpaces(int spacesParam){this->spaces = spacesParam;}
+    
+    static const int STOKEN_TYPE = 3;
 };
 
 #endif /* defined(__TokenSearch__SToken__) */

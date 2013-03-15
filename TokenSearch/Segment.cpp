@@ -8,8 +8,8 @@
 
 #include "Segment.h"
 
-void Segment::getSegmentCopyBase(char** segmentCopy){
-    int size = (int)strlen(this->segmentStr);
-    *segmentCopy = new char[size];
-    strcpy(*segmentCopy, this->segmentStr);
+Segment::Segment(){
+    this->type = Segment::SEGMENT_TYPE;
+    this->offset = 0;
+    this->length = 0;
 }

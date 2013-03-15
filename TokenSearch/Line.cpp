@@ -7,6 +7,7 @@
 //
 
 #include "Line.h"
+#include "StrHelper.h"
 
 Line::Line(){
     contents = NULL;
@@ -20,9 +21,7 @@ void Line::set(char* contentsParam){
 }
 
 void Line::getContents(char** contentsCopyPtr){
-    int size = (int)strlen(this->contents);
-    *contentsCopyPtr = new char[size];
-    strcpy(*contentsCopyPtr, this->contents);
+    StrHelper::copyString(contentsCopyPtr, this->contents);
 }
 
 void Line::clean(){

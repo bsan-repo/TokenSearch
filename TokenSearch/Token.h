@@ -13,10 +13,14 @@
 #include "Segment.h"
 
 class Token : public Segment{
+protected:
+    int index;
 public:
     Token();
-    void getSegmentCopy(char** segmentCopy);
-    const static uint TOKEN_TYPE = 2;
+    inline int getIndex(){return index;}
+    inline void setIndex(int indexParam){this->index = indexParam;}
+    
+    static const int TOKEN_TYPE = 2;
 };
 
 #endif /* defined(__TokenSearch__Token__) */

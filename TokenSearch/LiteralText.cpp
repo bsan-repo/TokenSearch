@@ -9,9 +9,5 @@
 #include "LiteralText.h"
 
 LiteralText::LiteralText(){
-    this->typeSegment = LiteralText::LITERAL_TEXT_TYPE;
-}
-
-void LiteralText::getSegmentCopy(char** segmentCopy){
-    this->getSegmentCopyBase(segmentCopy);
+    this->type = LiteralText::LITERALTEXT_TYPE;
 }

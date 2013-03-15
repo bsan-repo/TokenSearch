@@ -10,8 +10,11 @@
 #define __TokenSearch__PCREPattern__
 
 #include <iostream>
+#include "Pattern.h"
 
-class PCREPattern{
+class PCREPattern : public Pattern{
+protected:
+    void constructRegEx();
 public:
     PCREPattern(char* patternStr);
     void getRegEx(char** regEx);

@@ -9,9 +9,6 @@
 #include "Token.h"
 
 Token::Token(){
-    this->typeSegment = Token::TOKEN_TYPE;
-}
-
-void Token::getSegmentCopy(char** segmentCopy){
-    this->getSegmentCopyBase(segmentCopy);
+    this->type = Token::TOKEN_TYPE;
+    this->index = 0;
 }
