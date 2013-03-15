@@ -43,6 +43,9 @@ PCREPattern::PCREPattern(char* patternStr):Pattern(patternStr){
     }else{
         //printf("ERROR: %s\n", errorMsg); // DEV
     }
+    
+    if(results != NULL){delete[] results;}
+    if (errorMsg != NULL){delete[] errorMsg;}
 }
 
 void PCREPattern::constructRegEx(){

@@ -24,6 +24,8 @@ protected:
 public:
     Pattern(char* patternStr);
     virtual void getRegEx(char** regEx) = 0;
+    inline const std::list<Segment*> getSegments(){return segments;}
+    void getPattern(char** patternCopy);
 };
 
 #endif /* defined(__TokenSearch__Pattern__) */

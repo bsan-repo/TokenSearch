@@ -60,3 +60,7 @@ Segment* Pattern::extractToken(int offset, int length){
     
     return segment;
 }
+
+void Pattern::getPattern(char** patternCopy){
+    StrHelper::copyString(patternCopy, this->pattern);
+}
