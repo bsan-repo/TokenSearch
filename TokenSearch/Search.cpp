@@ -8,9 +8,10 @@
 
 #include "Search.h"
 
-Search::Search(File* file, Pattern* pattern){
+Search::Search(File* file, Pattern* pattern, RegExProcessor* processor){
     this->file = file;
     this->pattern = pattern;
+    this->processor = processor;
 }
 
 Search::~Search(){
@@ -18,4 +19,21 @@ Search::~Search(){
         delete *it;
         lineResults.pop_front();
     }
+}
+
+bool Search::isPatternInLine(char* line){
+    int* results = NULL;
+    int resultsSize = 0;
+    char* errorMsg = NULL;
+    char* regExPattern = NULL;
+    
+    pattern->getRegEx(&regExPattern);
+    
+    // Extract the items using RegExs
+    bool execOK = processor->match(regExPattern, line, &results, &resultsSize, &errorMsg, true);
+    
+    if(execOK == true && resultsSize>0){
+        return true;
+    }
+    return false;
 }
