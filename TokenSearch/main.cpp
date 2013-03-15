@@ -10,6 +10,8 @@
 #include <iostream>
 #include "File.h"
 #include "PCREPattern.h"
+#include "PCREProcessor.h"
+#include "Search.h"
 
 
 int main(int argc, const char * argv[])
@@ -22,6 +24,8 @@ int main(int argc, const char * argv[])
     
     File* file = new File();
     Pattern* pattern = new PCREPattern(patternStr);
+    PCREProcessor processor;
+    Search search(file, pattern, &processor);
     
     FILE *testFile;
     if((testFile = fopen("/Users/6opC4h4e3/Desktop/testFile.txt", "r"))== NULL){
@@ -30,11 +34,12 @@ int main(int argc, const char * argv[])
         int dataCounter = 0;
         while(!feof(testFile)){
             char c = fgetc(testFile);
-            printf("%c", c);
+            //printf("%c", c);
             if(c == '\n'){
                 line[dataCounter] = NULL;
                 dataCounter = 0;
                 file->addLine(line);
+                printf("_____> %s  : %d", line, search.isPatternInLine(line));
             }else{
                 line[dataCounter] = c;
                 dataCounter++;
@@ -43,6 +48,7 @@ int main(int argc, const char * argv[])
         line[dataCounter-1] = NULL;
         dataCounter = 0;
         file->addLine(line);
+        printf("_____> %s  : %d\n", line, search.isPatternInLine(line));
     }
     
     /*
