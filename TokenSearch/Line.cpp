@@ -9,12 +9,8 @@
 #include "Line.h"
 #include "StrHelper.h"
 
-Line::Line(){
-    contents = NULL;
-    patternFoundInLine = false;
-}
-
-void Line::set(char* contentsParam){
+Line::Line(int numberParam, char* contentsParam){
+    number = numberParam;
     int size = (int)strlen(contentsParam);
     this->contents = new char[size];
     strcpy(this->contents, contentsParam);
@@ -24,14 +20,9 @@ void Line::getContents(char** contentsCopyPtr){
     StrHelper::copyString(contentsCopyPtr, this->contents);
 }
 
-void Line::clean(){
+Line::~Line(){
     if(contents != NULL){
         delete[] contents;
         contents = NULL;
     }
-    patternFoundInLine = false;
-}
-
-Line::~Line(){
-    clean();
 }

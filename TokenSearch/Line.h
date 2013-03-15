@@ -13,15 +13,12 @@
 
 class Line{
 private:
+    int number;
     char* contents;
-    bool patternFoundInLine;
 public:
-    Line();
-    void set(char* contents);
-    void clean();
+    Line(int numberParam,char* contents);
     void getContents(char** contentsCopyPtr);
-    inline bool isPatternFoundInLine(){return patternFoundInLine;}
-    inline void setPatternFoundInLine(bool found){ patternFoundInLine = found;}
+    inline int getNumber(){return number;}
     ~Line();
 };
 

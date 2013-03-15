@@ -17,10 +17,12 @@
 class File{
 private:
     std::list<Line*> lines;
+    int numberOfLines;
 public:
     File();
     void addLine(char* lineContentsParam);
-    void cleanFile();
+    inline int getNumberOfLines(){return numberOfLines;}
+    const std::list<Line*> getLines(){return lines;}
     ~File();
 };
 

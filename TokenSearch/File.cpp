@@ -10,21 +10,18 @@
 
 #include <vector>
 
+
 File::File(){
-    
+    numberOfLines = 0;
 }
 
 void File::addLine(char* lineContentsParam){
-    Line* line = new Line();
-    line->set(lineContentsParam);
+    numberOfLines += 1;
+    Line* line = new Line(numberOfLines, lineContentsParam);
     lines.push_back(line);
     
     char* contentsCopy = NULL;
     line->getContents(&contentsCopy);
-}
-
-void File::cleanFile(){
-    
 }
 
 File::~File(){
