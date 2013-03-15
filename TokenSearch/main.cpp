@@ -12,6 +12,7 @@
 #include "PCREPattern.h"
 #include "PCREProcessor.h"
 #include "Search.h"
+#include "StdPrintResultsSearch.h"
 
 
 int main(int argc, const char * argv[])
@@ -36,7 +37,7 @@ int main(int argc, const char * argv[])
     File* file = new File();
     Pattern* pattern = new PCREPattern(patternStr);
     PCREProcessor processor;
-    Search search(file, pattern, &processor);
+    Search searchInLines(file, pattern, &processor);
     
     std::cout << "Pattern: "<<patternStr<<std::endl;
     char* regEx = NULL;
@@ -55,7 +56,7 @@ int main(int argc, const char * argv[])
                 line[dataCounter] = NULL;
                 dataCounter = 0;
                 file->addLine(line);
-                printf("> %s  : %d\n", line, search.isPatternInLine(line));
+                printf("> %s  : %d\n", line, searchInLines.isPatternInLine(line));
             }else{
                 line[dataCounter] = c;
                 dataCounter++;
@@ -64,8 +65,13 @@ int main(int argc, const char * argv[])
         line[dataCounter-1] = NULL;
         dataCounter = 0;
         file->addLine(line);
-        printf("> %s  : %d \n\n", line, search.isPatternInLine(line));
+        printf("> %s  : %d \n\n", line, searchInLines.isPatternInLine(line));
     }
+    
+    Search search(file, pattern, &processor);
+    std::cout<<"\n\n--------------------- TOKEN RESULS -----------------\n";
+    StdPrintResultsSearch::print(&search);
+    
     
     /*
     printf("---------------------\n");
