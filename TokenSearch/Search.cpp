@@ -14,85 +14,116 @@ Search::Search(File* file, Pattern* pattern, PCREProcessor* processor){
     this->pattern = pattern;
     this->processor = processor;
     
+    char* lineContents = NULL;
+    
     const std::list<Line*> fileLines = this->file->getLines();
     
     for (std::list<Line*>::const_iterator cit = fileLines.begin(); cit != fileLines.end(); cit++) {
-        char* lineContents = NULL;
+        lineContents = NULL;
         (*cit)->getContents(&lineContents);
-        if (this->isPatternInLine(lineContents)){
-            LineResult* lineResult = new LineResult((*cit)->getNumber());
-            this->getTokensForLine(lineContents, lineResult);
-            this->lineResults.push_back(lineResult);
+        printf("LINE CONTENTS _> %s\n", lineContents);
+        // Skip empty lines
+        if(lineContents != NULL){
+            if (this->isPatternInLine(lineContents)){
+                LineResult* lineResult = new LineResult((*cit)->getNumber());
+                this->getTokensForLine(lineContents, lineResult);
+                this->lineResults.push_back(lineResult);
+                printf("RESULTS (%d) -> %s\n", lineResult->getLineNumber(), lineContents);
+            }
+            if(lineContents!= NULL){
+                delete[] lineContents;
+                lineContents = NULL;
+            }
         }
-        delete[] lineContents;
     }
 }
 
 Search::~Search(){
     for (std::list<LineResult*>::iterator it = lineResults.begin(); it != lineResults.end(); it++){
         delete *it;
+        *it = NULL;
         lineResults.pop_front();
     }
 }
 
 void Search::getTokensForLine(char* lineContents, LineResult* lineResult){
-    const std::list<Segment*> patternSegments = this->pattern->getSegments();
     int  lineOffset = 0;
-   
+    int* results = NULL;
+    int resultSize = 0;
+    char* errorMsg = NULL;
+    Segment* segment = NULL;
+    char* patternStr = NULL;
+    char currentRegEx[100];
+    int offset = 0;
+    int length = 0;
+    char literalTextRegEx[200];
+    
+    const std::list<Segment*> patternSegments = this->pattern->getSegments();
+    pattern->getPattern(&patternStr);
+    int patternSegmentsSize = (int)patternSegments.size();
+    int patternCounter = 1;
+    
     for (std::list<Segment*>::const_iterator cit = patternSegments.begin(); cit != patternSegments.end(); cit++) {
-        int* results = NULL;
-        int resultSize = 0;
-        char* errorMsg = NULL;
-        Segment* segment = (*cit);
-        char* patternStr = NULL;
-        char* currentRegEx = NULL;
+        segment = (*cit);
         
-        pattern->getPattern(&patternStr);
+        
+        ////////////////////////////
+        char segmentText[100];
+        sprintf(segmentText, "%.*s", segment->getLength(), patternStr+segment->getOffset());
+        printf("SEGMENT: t(%d) -> %s off(%d) l(%d)\n", segment->getType(), segmentText, segment->getOffset(), segment->getLength());
+        ////////////////////////////
         
         switch (segment->getType()) {
             case SegmentFactory::LITERALTEXT:{
                 // Skipt literal text
+                offset = segment->getOffset();
+                length = segment->getLength();
                 results = NULL;
                 errorMsg = NULL;
-                int offset = segment->getOffset();
-                int length = segment->getLength();
-                char literalTextRegEx[200];
-                sprintf(literalTextRegEx, "\'%.*s", length, patternStr+offset);
+                sprintf(literalTextRegEx, "^%.*s", length, patternStr+offset);
                 
-                literalTextRegEx[0]='^';
                 processor->match(literalTextRegEx, (lineContents+lineOffset), &results, &resultSize, &errorMsg);
                 if(resultSize > 0){
                     lineOffset += results[0]+results[1];//lineOffset+=offset+lenght
                 }
-                if(results != NULL){delete [] results;} //TODO solve bug with memory release error
-                if(errorMsg != NULL){delete [] errorMsg;}
+                printf("LITERALTEXT M(%s) L_OFF(%d)\n", literalTextRegEx, lineOffset);
+                if(results != NULL){delete [] results; results = NULL;}
+                if(errorMsg != NULL){delete [] errorMsg; errorMsg = NULL;}
                 break;
             }
             case SegmentFactory::TOKEN:
             case SegmentFactory::STOKEN:{
                 results = NULL;
                 errorMsg = NULL;
-                currentRegEx = NULL;
-                Token* token = ((Token*)segment);
-                token->getRegEx(&currentRegEx);
-                char* tokenRegEx = new char[strlen(currentRegEx)+2];
-                sprintf(tokenRegEx, "^%s", currentRegEx);
-                processor->match(tokenRegEx, (lineContents+lineOffset), &results, &resultSize, &errorMsg, true);
+                if(segment->getType() == SegmentFactory::STOKEN){
+                    int spaces = ((SToken*)segment)->getSpaces();
+                    if(spaces < 1){
+                        sprintf(currentRegEx, "(\\b\\w+\\b)");
+                    }else{
+                        sprintf(currentRegEx, "(\\b\\w+\\b ){1,%d}(\\b\\w+\\b)", spaces);
+                    }
+                }else{
+                    if(patternCounter >= patternSegmentsSize){
+                        sprintf(currentRegEx, ".*");
+                    }else{
+                        sprintf(currentRegEx, "^\\b\\w+\\b");
+                    }
+                }
+                processor->match(currentRegEx, (lineContents+lineOffset), &results, &resultSize, &errorMsg, true);
                 if(resultSize > 0){
                     int offset = results[0];
                     int length = results[1];
                     char* tokenResultStr = new char[length];
                     strncpy(tokenResultStr, (lineContents+lineOffset+offset), length);
-                    TokenResult* tokenResult = new TokenResult(token->getIndex(), tokenResultStr);
+                    TokenResult* tokenResult = new TokenResult(((Token*)segment)->getIndex(), tokenResultStr);
                     lineResult->addTokenResult(tokenResult);
                     
                     lineOffset += results[0]+results[1];//lineOffset+=offset+lenght
-                    
-                    if(tokenRegEx != NULL){delete [] tokenRegEx;}
+                    printf("TOKEN RESULT(%d): %s\n", ((Token*)segment)->getIndex(), tokenResultStr);
                 }
-                if(currentRegEx != NULL){delete [] currentRegEx;}
-                if(results != NULL){delete [] results;}
-                if(errorMsg != NULL){delete [] errorMsg;}
+                printf("TOKEN M(%s) L_OFF(%d)\n", currentRegEx, lineOffset);
+                if(results != NULL){delete [] results; results = NULL;}
+                if(errorMsg != NULL){delete [] errorMsg; errorMsg = NULL;}
                 break;
             }
             case SegmentFactory::GTOKEN:{
@@ -104,8 +135,9 @@ void Search::getTokensForLine(char* lineContents, LineResult* lineResult){
         }
         
         
-        if(results != NULL){delete[] results;}
-        if (errorMsg != NULL){delete[] errorMsg;}
+        if(results != NULL){delete[] results; results = NULL;}
+        if (errorMsg != NULL){delete[] errorMsg; errorMsg = NULL;}
+        patternCounter++;
     }
 }
 

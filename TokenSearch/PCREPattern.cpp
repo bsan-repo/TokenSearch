@@ -89,7 +89,11 @@ void PCREPattern::constructRegEx(){
                 // TODO Make stoken reg ex string secure allowing to have n digits
                 char sTokenRegEx[25] = {0};
                 if(spaces > 0){
-                    sprintf(sTokenRegEx, "(\\b\\w+\\b){1,%d}", spaces);
+                    if(spaces < 1){
+                        sprintf(sTokenRegEx, "(\\b\\w+\\b)");
+                    }else{
+                        sprintf(sTokenRegEx, "(\\b\\w+\\b ){1,%d}(\\b\\w+\\b)", spaces);
+                    }
                 }else{
                     strcpy(sTokenRegEx, (char*)"(\\b\\w+\\b)");
                 }

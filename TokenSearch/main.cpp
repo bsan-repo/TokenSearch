@@ -39,6 +39,37 @@ int main(int argc, const char * argv[])
         pattern->getRegEx(&regEx);
         std::cout << "RegEx: "<<regEx<<std::endl;
         
+        /////////////////////////////////////////////////////////
+        FILE *testFile;
+        if((testFile = fopen("/Users/6opC4h4e3/Desktop/testFile.txt", "r"))== NULL){
+            printf("file not found\n");
+        }else{
+            int dataCounter = 0;
+            while(!feof(testFile)){
+                char c = fgetc(testFile);
+                //printf("%c", c);
+                if(c == '\n'){
+                    line[dataCounter] = NULL;
+                    dataCounter = 0;
+                    file->addLine(line);
+                    printf("> %s  : %d\n", line, searchInLines.isPatternInLine(line));
+                }else{
+                    line[dataCounter] = c;
+                    dataCounter++;
+                }
+            }
+            line[dataCounter-1] = NULL;
+            dataCounter = 0;
+            file->addLine(line);
+            printf("> %s  : %d \n\n", line, searchInLines.isPatternInLine(line));
+        }
+        
+        Search search(file, pattern, &processor);
+        std::cout<<"\n\n--------------------- TOKEN RESULS -----------------\n";
+        StdPrintResultsSearch::print(&search);
+        
+        delete file;
+        /*
         int dataCounter = 0;
         while(!feof(stdin)){
             char c = fgetc(stdin);
@@ -61,6 +92,7 @@ int main(int argc, const char * argv[])
         Search search(file, pattern, &processor);
         std::cout<<"\n\n--------------------- TOKEN RESULS -----------------\n";
         StdPrintResultsSearch::print(&search);
+        */
     }else{
         std::cout<<"No pattern was given.\n";
     }
