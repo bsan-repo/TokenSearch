@@ -29,6 +29,9 @@ public:
     Search(File* file, Pattern* pattern, PCREProcessor* processor);
     const std::list<LineResult*> getLineResults(){return lineResults;}
     bool isPatternInLine(char* line);
+    
+    inline File* getFile(){return file;}
+    inline Pattern* getPattern(){return pattern;}
     ~Search();
 };
 

@@ -11,10 +11,12 @@
 
 #include <iostream>
 #include "Pattern.h"
+#include "Segment.h"
 
 class PCREPattern : public Pattern{
 protected:
     void constructRegEx();
+    Segment* newLiteralTextSegment(int offset, int length);
 public:
     PCREPattern(char* patternStr);
     void getRegEx(char** regEx);

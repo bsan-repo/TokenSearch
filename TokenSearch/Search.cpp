@@ -21,14 +21,12 @@ Search::Search(File* file, Pattern* pattern, PCREProcessor* processor){
     for (std::list<Line*>::const_iterator cit = fileLines.begin(); cit != fileLines.end(); cit++) {
         lineContents = NULL;
         (*cit)->getContents(&lineContents);
-        printf("LINE CONTENTS _> %s\n", lineContents);
         // Skip empty lines
         if(lineContents != NULL){
             if (this->isPatternInLine(lineContents)){
                 LineResult* lineResult = new LineResult((*cit)->getNumber());
                 this->getTokensForLine(lineContents, lineResult);
                 this->lineResults.push_back(lineResult);
-                printf("RESULTS (%d) -> %s\n", lineResult->getLineNumber(), lineContents);
             }
             if(lineContents!= NULL){
                 delete[] lineContents;
@@ -66,13 +64,6 @@ void Search::getTokensForLine(char* lineContents, LineResult* lineResult){
     for (std::list<Segment*>::const_iterator cit = patternSegments.begin(); cit != patternSegments.end(); cit++) {
         segment = (*cit);
         
-        
-        ////////////////////////////
-        char segmentText[100];
-        sprintf(segmentText, "%.*s", segment->getLength(), patternStr+segment->getOffset());
-        printf("SEGMENT: t(%d) -> %s off(%d) l(%d)\n", segment->getType(), segmentText, segment->getOffset(), segment->getLength());
-        ////////////////////////////
-        
         switch (segment->getType()) {
             case SegmentFactory::LITERALTEXT:{
                 // Skipt literal text
@@ -86,7 +77,6 @@ void Search::getTokensForLine(char* lineContents, LineResult* lineResult){
                 if(resultSize > 0){
                     lineOffset += results[0]+results[1];//lineOffset+=offset+lenght
                 }
-                printf("LITERALTEXT M(%s) L_OFF(%d)\n", literalTextRegEx, lineOffset);
                 if(results != NULL){delete [] results; results = NULL;}
                 if(errorMsg != NULL){delete [] errorMsg; errorMsg = NULL;}
                 break;
@@ -119,9 +109,7 @@ void Search::getTokensForLine(char* lineContents, LineResult* lineResult){
                     lineResult->addTokenResult(tokenResult);
                     
                     lineOffset += results[0]+results[1];//lineOffset+=offset+lenght
-                    printf("TOKEN RESULT(%d): %s\n", ((Token*)segment)->getIndex(), tokenResultStr);
                 }
-                printf("TOKEN M(%s) L_OFF(%d)\n", currentRegEx, lineOffset);
                 if(results != NULL){delete [] results; results = NULL;}
                 if(errorMsg != NULL){delete [] errorMsg; errorMsg = NULL;}
                 break;

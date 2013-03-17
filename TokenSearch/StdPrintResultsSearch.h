@@ -13,8 +13,10 @@
 #include "Search.h"
 
 class StdPrintResultsSearch{
+private:
+    static void printTokens(const std::list<TokenResult*> &tokenResults);
 public:
-    static void print(Search* search);
+    static void print(Search* search, File* file);
 };
 
 #endif /* defined(__TokenSearch__StdPrintResultsSearch__) */

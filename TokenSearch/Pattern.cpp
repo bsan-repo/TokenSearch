@@ -19,18 +19,19 @@ Pattern::Pattern(char* patternStr){
 }
 
 Segment* Pattern::extractToken(int offset, int length){
-    char character = NULL;
+    char character = NULL; // unused part of the token
     int index = 0;
     Segment* segment = NULL;
     
     // skip the first two chars = %{
     int initialOffset = 2;
     // and check if third is a letter
-    if(isalpha(this->pattern[2]) == true){
-        character = this->pattern[2];
+    if(isdigit(this->pattern[offset+initialOffset]) == false){
+        character = this->pattern[offset+initialOffset];
         initialOffset = 3;
+        printf("ADDING NON DIGIT DISPLACEMENT\n");
     }
-    index = atoi(this->pattern+offset+initialOffset-1);
+    index = atoi(this->pattern+offset+initialOffset);
     for(int i = initialOffset; i < length; i++){
         char c = this->pattern[offset+i];
         if(isdigit(c)==false){

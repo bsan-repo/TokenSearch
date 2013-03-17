@@ -16,6 +16,11 @@
 #define OVECCOUNT 30 
 
 bool PCREProcessor::match(char* pattern, char* subject, int** results, int* resultsSize, char** errorMsg, bool firstOnly){
+    
+    if(pattern == NULL || subject == NULL){
+        return false;
+    }
+        
     pcre *re;
     const char *error;
     unsigned int option_bits;

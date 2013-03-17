@@ -16,6 +16,7 @@ PCREPattern::PCREPattern(char* patternStr):Pattern(patternStr){
     int* results = NULL;
     int resultsSize = 0;
     char* errorMsg = NULL;
+    int patternLength = (int)strlen(patternStr);
 
     // Extract the items usind RegExs
     bool execOK = regExProcessor.match((char*)"\\%\\{[a-zA-Z]?\\d*([sS]\\d*|G)?}", patternStr, &results, &resultsSize, &errorMsg);
@@ -29,19 +30,22 @@ PCREPattern::PCREPattern(char* patternStr):Pattern(patternStr){
                 int matchOffset = results[i];
                 int matchLength = results[i+1];
                 if(literalTextBegin < matchOffset){
-                    Segment* segment = SegmentFactory::getSegment(SegmentFactory::LITERALTEXT);
-                    segment->setOffset(literalTextBegin);
-                    segment->setLength(matchOffset-literalTextBegin);
+                    Segment* segment = this->newLiteralTextSegment(literalTextBegin, matchOffset-literalTextBegin);
                     this->segments.push_back(segment);
                 }
                 this->segments.push_back(this->extractToken(matchOffset, matchLength));
                 literalTextBegin = matchOffset + matchLength;
+                // If it's the last pattern check if there's literal text after it
+                if(i>=(resultsSize-2)){
+                    if (literalTextBegin<patternLength) {
+                        Segment* segment = this->newLiteralTextSegment(literalTextBegin, patternLength-literalTextBegin);
+                        this->segments.push_back(segment);
+                    }
+                }
             }
         }else{
             // No tokens were found, copy the whole literal text as Reg Ex
-            Segment* segment = SegmentFactory::getSegment(SegmentFactory::LITERALTEXT);
-            segment->setOffset(0);
-            segment->setLength((int)strlen(patternStr));
+            Segment* segment = this->newLiteralTextSegment(0, patternLength);
             this->segments.push_back(segment);
 
         }
@@ -129,6 +133,14 @@ void PCREPattern::constructRegEx(){
         this->regEx[regExSize+1] = NULL;
     }
     //printf("REG EX --- -- %s\n", this->regEx);
+}
+
+Segment* PCREPattern::newLiteralTextSegment(int offset, int length){
+    Segment* segment = SegmentFactory::getSegment(SegmentFactory::LITERALTEXT);
+    segment->setOffset(offset);
+    segment->setLength(length);
+    
+    return segment;
 }
 
 void PCREPattern::getRegEx(char** regExParam){

@@ -52,7 +52,6 @@ int main(int argc, const char * argv[])
                     line[dataCounter] = NULL;
                     dataCounter = 0;
                     file->addLine(line);
-                    printf("> %s  : %d\n", line, searchInLines.isPatternInLine(line));
                 }else{
                     line[dataCounter] = c;
                     dataCounter++;
@@ -61,12 +60,10 @@ int main(int argc, const char * argv[])
             line[dataCounter-1] = NULL;
             dataCounter = 0;
             file->addLine(line);
-            printf("> %s  : %d \n\n", line, searchInLines.isPatternInLine(line));
         }
         
         Search search(file, pattern, &processor);
-        std::cout<<"\n\n--------------------- TOKEN RESULS -----------------\n";
-        StdPrintResultsSearch::print(&search);
+        StdPrintResultsSearch::print(&search, file);
         
         delete file;
         /*
@@ -77,7 +74,6 @@ int main(int argc, const char * argv[])
                 line[dataCounter] = NULL;
                 dataCounter = 0;
                 file->addLine(line);
-                printf("> %s  : %d\n", line, searchInLines.isPatternInLine(line));
             }else{
                 line[dataCounter] = c;
                 dataCounter++;
@@ -86,11 +82,8 @@ int main(int argc, const char * argv[])
         line[dataCounter-1] = NULL;
         dataCounter = 0;
         file->addLine(line);
-        printf("> %s  : %d \n\n", line, searchInLines.isPatternInLine(line));
-        printf("---------------------\n");
     
         Search search(file, pattern, &processor);
-        std::cout<<"\n\n--------------------- TOKEN RESULS -----------------\n";
         StdPrintResultsSearch::print(&search);
         */
     }else{
