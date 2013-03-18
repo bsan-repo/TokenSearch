@@ -25,10 +25,11 @@ protected:
     std::list<LineResult*> lineResults;
     
     void getTokensForLine(char* lineContents, LineResult* lineResult);
+    bool isPatternInLine(char* line);
+    void extractPatternsBackwards(char* lineContents, Segment* currentSegment, LineResult* lineResult, const std::list<Segment*> &patternSegments);
 public:
     Search(File* file, Pattern* pattern, PCREProcessor* processor);
     const std::list<LineResult*> getLineResults(){return lineResults;}
-    bool isPatternInLine(char* line);
     
     inline File* getFile(){return file;}
     inline Pattern* getPattern(){return pattern;}

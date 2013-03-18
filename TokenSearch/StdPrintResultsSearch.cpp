@@ -23,10 +23,10 @@ void StdPrintResultsSearch::print(Search* search, File* file){
         lineNumber = (*citline)->getNumber();
         line = NULL;
         (*citline)->getContents(&line);
-        printf("(%2d) > %s\n", lineNumber, line);
-        
+        printf("(%2d) > %s\n", lineNumber, line);        
         
         if(lineNumber == (*citlr)->getLineNumber()){
+            std::cout<<"     > FOUND"<<std::endl;
             StdPrintResultsSearch::printTokens((*citlr)->getTokenResults());
             if(citlr != lineResults.end()){
                 citlr++;

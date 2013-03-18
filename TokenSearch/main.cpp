@@ -18,8 +18,7 @@
 int main(int argc, const char * argv[])
 {
     // insert code here...
-    std::cout << "Token search utility - v1\n\n";
-    std::cout << "End of line with 1 = Found, 0 = Not found\n\n";
+    std::cout << "\n\n\n\nToken search utility - v1\n\n";
     
     char *line = new char[1000];
     char patternStr[200];
@@ -34,10 +33,12 @@ int main(int argc, const char * argv[])
         Search searchInLines(file, pattern, &processor);
         
         // Print info
-        std::cout << "Pattern: "<<patternStr<<std::endl;
+        std::cout << "=========================================="<<std::endl;
+        std::cout << "      Pattern: "<<patternStr<<std::endl;
         char* regEx = NULL;
         pattern->getRegEx(&regEx);
-        std::cout << "RegEx: "<<regEx<<std::endl;
+        std::cout << "      RegEx: "<<regEx<<std::endl;
+        std::cout << "==========================================="<<std::endl;
         
         /////////////////////////////////////////////////////////
         FILE *testFile;

@@ -33,8 +33,6 @@ bool PCREProcessor::match(char* pattern, char* subject, int** results, int* resu
     char errorBuffer[200];
     std::list<int> resultsList;
     
-    //printf("PATTERN: %s\n", pattern);
-    //printf("SUBJECT: %s\n", subject);
     // ----------------------------------------------------------------------------
     
     subject_length = (int)strlen(subject);
