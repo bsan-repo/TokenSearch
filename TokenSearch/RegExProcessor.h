@@ -11,9 +11,8 @@
 
 #include <iostream>
 
-// TODO Inherit from this class PCRE implementation - Check
-// problem multiple definitions of match for PCRE class at linking
-// Change in search class
+// Executes a search in a text of a regular expression
+
 class RegExProcessor{
 public:
     // Match the pattern over the subject and save the results to 'results' in pairs,

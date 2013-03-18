@@ -16,6 +16,8 @@
 #include "SToken.h"
 #include "GToken.h"
 
+// Used to centralized the types of segments.
+
 class SegmentFactory{
 public:
     static const int SEGMENT = Segment::SEGMENT_TYPE;

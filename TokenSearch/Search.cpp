@@ -19,11 +19,13 @@ Search::Search(File* file, Pattern* pattern, PCREProcessor* processor){
     
     const std::list<Line*> fileLines = this->file->getLines();
     
+    // Iterate over all lines of the file
     for (std::list<Line*>::const_iterator cit = fileLines.begin(); cit != fileLines.end(); cit++) {
         lineContents = NULL;
         (*cit)->getContents(&lineContents);
         // Skip empty lines
         if(lineContents != NULL){
+            // If the pattern is in the line, get the contents of the tokens
             if (this->isPatternInLine(lineContents)){
                 LineResult* lineResult = new LineResult((*cit)->getNumber());
                 this->getTokensForLine(lineContents, lineResult);
@@ -61,6 +63,8 @@ void Search::getTokensForLine(char* lineContents, LineResult* lineResult){
     int patternSegmentsSize = (int)patternSegments.size();
     int patternCounter = 1;
     
+    // Separate the line using the different segments to obtain the contents
+    // of the tokens
     for (std::list<Segment*>::const_iterator cit = patternSegments.begin(); cit != patternSegments.end(); cit++) {
         segment = (*cit);
         
@@ -74,6 +78,8 @@ void Search::getTokensForLine(char* lineContents, LineResult* lineResult){
                 sprintf(literalTextRegEx, "^%.*s", length, patternStr+offset);
                 
                 processor->match(literalTextRegEx, (lineContents+lineOffset), &results, &resultSize, &errorMsg);
+                // If the literal text was found then advance the line offset to
+                // continue the search
                 if(resultSize > 0){
                     lineOffset += results[0]+results[1];//lineOffset+=offset+lenght
                 }
@@ -83,16 +89,21 @@ void Search::getTokensForLine(char* lineContents, LineResult* lineResult){
             }
             case SegmentFactory::TOKEN:
             case SegmentFactory::STOKEN:{
+                // Retrieve the contents for the current token
                 results = NULL;
                 errorMsg = NULL;
                 if(segment->getType() == SegmentFactory::STOKEN){
                     int spaces = ((SToken*)segment)->getSpaces();
+                    // Account for the special case when there are zero spaces
                     if(spaces < 1){
                         sprintf(currentRegEx, "^(\\b\\w+\\b)");
                     }else{
+                        // ({word}{space})^n{word}
                         sprintf(currentRegEx, "^((\\b\\w+\\b ){1,%d}(\\b\\w+\\b))", spaces);
                     }
                 }else{
+                    // Account for special case, if a simple token is last
+                    // then it should obtain all the remaining text
                     if(patternCounter >= patternSegmentsSize){
                         sprintf(currentRegEx, "^.*");
                     }else{
@@ -100,6 +111,8 @@ void Search::getTokensForLine(char* lineContents, LineResult* lineResult){
                     }
                 }
                 processor->match(currentRegEx, (lineContents+lineOffset), &results, &resultSize, &errorMsg, true);
+                // If a result was found then store it and advance the offset in the
+                // line to continue the search
                 if(resultSize > 0){
                     int offset = results[0];
                     int length = results[1];
@@ -115,6 +128,9 @@ void Search::getTokensForLine(char* lineContents, LineResult* lineResult){
                 break;
             }
             case SegmentFactory::GTOKEN:{
+                // If a greedy token was found then retrieve the rest of the
+                // leaving segments backwards and leave the remaining text
+                // for this token
                 gTokenBackwardsSearchCompleted = true;
                 // Extract the only leaving content = lineContents+lineOffset
                 this->extractPatternsBackwards(lineContents+lineOffset, segment, lineResult, patternSegments);
@@ -161,10 +177,12 @@ void Search::extractPatternsBackwards(char* lineContents, Segment* currentSegmen
                 int lengthPattern = segment->getLength();
                 results = NULL;
                 errorMsg = NULL;
+                // Special case for backwards
                 sprintf(literalTextRegEx, "%.*s$", lengthPattern, patternStr+offsetPattern);
                 
                 processor->match(literalTextRegEx, lineAnalyzed, &results, &resultSize, &errorMsg);
                 if(resultSize > 0){
+                    // Special case for backwards
                     lineAnalyzed[lineAnalyzedLength-lengthPattern] = NULL;
                     lineAnalyzedLength -= lengthPattern;
                 }
@@ -176,6 +194,7 @@ void Search::extractPatternsBackwards(char* lineContents, Segment* currentSegmen
             case SegmentFactory::STOKEN:{
                 results = NULL;
                 errorMsg = NULL;
+                // Special case for backwards
                 if(segment->getType() == SegmentFactory::STOKEN){
                     int spaces = ((SToken*)segment)->getSpaces();
                     if(spaces < 1){
@@ -191,10 +210,12 @@ void Search::extractPatternsBackwards(char* lineContents, Segment* currentSegmen
                     int offsetResult = results[0];
                     int lengthResult = results[1];
                     char* tokenResultStr = new char[lengthResult];
+                    // Special case for backwards
                     strncpy(tokenResultStr, (lineContents+offsetResult), lengthResult);
                     TokenResult* tokenResult = new TokenResult(((Token*)segment)->getIndex(), tokenResultStr);
                     lineResult->addTokenResult(tokenResult);
                     
+                    // Special case for backwards
                     lineAnalyzedLength -= results[1];
                 }
                 if(results != NULL){delete [] results; results = NULL;}
@@ -202,7 +223,8 @@ void Search::extractPatternsBackwards(char* lineContents, Segment* currentSegmen
                 break;
             }
             case SegmentFactory::GTOKEN:{
-                // Ignore
+                // Special case for backwards
+                // Ignore other greedy tokens
                 break;
             }
             default:
@@ -233,9 +255,9 @@ bool Search::isPatternInLine(char* line){
     
     pattern->getRegEx(&regExPattern);
     
-    // Extract the items using RegExs
     bool execOK = processor->match(regExPattern, line, &results, &resultsSize, &errorMsg, true);
     
+    // If the processing was OK and there were any results return true
     if(execOK == true && resultsSize>0){
         return true;
     }

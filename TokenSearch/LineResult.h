@@ -13,6 +13,8 @@
 #include <list>
 #include "TokenResult.h"
 
+// The toeken results for a search in a string of characters. The line number
+// correspond to the one in a line of a file given for a search.
 class LineResult{
 protected:
     int lineNumber;

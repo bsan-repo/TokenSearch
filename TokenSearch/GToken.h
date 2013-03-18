@@ -12,6 +12,8 @@
 #include <iostream>
 #include "Token.h"
 
+// Used to force the correct type of segment initialization
+
 class GToken : public Segment{
 public:
     GToken();

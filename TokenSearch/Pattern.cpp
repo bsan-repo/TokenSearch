@@ -25,12 +25,13 @@ Segment* Pattern::extractToken(int offset, int length){
     
     // skip the first two chars = %{
     int initialOffset = 2;
-    // and check if third is a letter
+    // and check if third is a letter or else skip
     if(isdigit(this->pattern[offset+initialOffset]) == false){
         character = this->pattern[offset+initialOffset];
         initialOffset = 3;
         printf("ADDING NON DIGIT DISPLACEMENT\n");
     }
+    // Retrieve the index
     index = atoi(this->pattern+offset+initialOffset);
     for(int i = initialOffset; i < length; i++){
         char c = this->pattern[offset+i];

@@ -13,6 +13,8 @@
 #include "Pattern.h"
 #include "Segment.h"
 
+// Implementation of Pattern for the PCRE library using RegEx understood by this library
+
 class PCREPattern : public Pattern{
 protected:
     void constructRegEx();

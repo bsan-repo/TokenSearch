@@ -13,6 +13,11 @@
 
 class StrHelper{
 public:
+    // Copies a character string.
+    // The "copy" argument should be a reference to a
+    // char pointer that is not pointing to a used
+    // char string. It should be released with delete[]
+    // after being used. 
     static void copyString(char** copy, const char* toCopy);
 };
 

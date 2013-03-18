@@ -11,6 +11,8 @@
 
 #include <iostream>
 
+// The contents of a token for a search in a string of characters. The index
+// correspond to a Token object index for a given Pattern.
 class TokenResult{
 protected:
     int index;

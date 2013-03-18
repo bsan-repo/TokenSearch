@@ -29,13 +29,18 @@ PCREPattern::PCREPattern(char* patternStr):Pattern(patternStr){
             for(int i = 0; i<resultsSize; i+=2){
                 int matchOffset = results[i];
                 int matchLength = results[i+1];
+                // If before the current token and the previous or the
+                // begining of the file there are characters add then as
+                // a literal text segment
                 if(literalTextBegin < matchOffset){
                     Segment* segment = this->newLiteralTextSegment(literalTextBegin, matchOffset-literalTextBegin);
                     this->segments.push_back(segment);
                 }
+                // Extract the token
                 this->segments.push_back(this->extractToken(matchOffset, matchLength));
                 literalTextBegin = matchOffset + matchLength;
                 // If it's the last pattern check if there's literal text after it
+                // added to the segments
                 if(i>=(resultsSize-2)){
                     if (literalTextBegin<patternLength) {
                         Segment* segment = this->newLiteralTextSegment(literalTextBegin, patternLength-literalTextBegin);
@@ -50,6 +55,7 @@ PCREPattern::PCREPattern(char* patternStr):Pattern(patternStr){
 
         }
         // Create the regular expression from the initial pattern
+        // once all the segments were extracted
         this->constructRegEx();
     }else{
         printf("ERROR: %s\n", errorMsg); // DEV
@@ -66,6 +72,8 @@ void PCREPattern::constructRegEx(){
     int numberOfSegments = (int)segments.size();
     int currentSegment = 1;
     bool hasGToken = false;
+    
+    // Iterate for all segments
     for (std::list<Segment*>::iterator it = this->segments.begin(); it != this->segments.end(); it++) {
         int type = (*it)->getType();
         int offset = (*it)->getOffset();
@@ -75,31 +83,29 @@ void PCREPattern::constructRegEx(){
         
         switch (type) {
             case SegmentFactory::LITERALTEXT:{
+                // Add all the literal text to the regular expression
                 strncpy(this->regEx+regExCurrentOffset, this->pattern+offset, length);
+                // Move the end of the regular expression to account for the added segment
                 regExCurrentOffset += length;
-                //printf("LITERALTEXT: %.*s    RE: %s\n", length, this->pattern+offset, this->regEx);
                 break;
             }
             case SegmentFactory::TOKEN:{
                 char* tokenRegEx = (char*)"\\b\\w+\\b";
                 int tokenRegExSize = (int)strlen(tokenRegEx);
                 strcpy(this->regEx+regExCurrentOffset, tokenRegEx);
+                // Move the end of the regular expression to account for the added segment
                 regExCurrentOffset += tokenRegExSize;
-                //printf("TOKEN: %.*s    RE: %s\n", length, this->pattern+offset, this->regEx);
                 break;
             }
             case SegmentFactory::STOKEN:{
                 int spaces = ((SToken*)*it)->getSpaces();
                 // TODO Make stoken reg ex string secure allowing to have n digits
                 char sTokenRegEx[25] = {0};
-                if(spaces > 0){
-                    if(spaces < 1){
-                        sprintf(sTokenRegEx, "(\\b\\w+\\b)");
-                    }else{
-                        sprintf(sTokenRegEx, "(\\b\\w+\\b ){1,%d}(\\b\\w+\\b)", spaces);
-                    }
+                // Account for special case when there is are zero spaces
+                if(spaces < 1){
+                    sprintf(sTokenRegEx, "(\\b\\w+\\b)");
                 }else{
-                    strcpy(sTokenRegEx, (char*)"(\\b\\w+\\b)");
+                    sprintf(sTokenRegEx, "(\\b\\w+\\b ){1,%d}(\\b\\w+\\b)", spaces);
                 }
                 if(currentSegment >= numberOfSegments){
                     int sTokenRegExSize = (int)strlen(sTokenRegEx);
@@ -108,21 +114,20 @@ void PCREPattern::constructRegEx(){
                 }
                 int sTokenRegExSize = (int)strlen(sTokenRegEx);
                 strcpy(this->regEx+regExCurrentOffset, sTokenRegEx);
+                // Move the end of the regular expression to account for the added segment
                 regExCurrentOffset += sTokenRegExSize;
-                //printf("STOKEN: %.*s    RE: %s\n", length, this->pattern+offset, this->regEx);
                 break;
             }
             case SegmentFactory::GTOKEN:{
                 char* gTokenRegEx = (char*)".+(";
                 int gTokenRegExSize = (int)strlen(gTokenRegEx);
                 strcpy(this->regEx+regExCurrentOffset, gTokenRegEx);
+                // Move the end of the regular expression to account for the added segment
                 regExCurrentOffset += gTokenRegExSize;
                 hasGToken = true;
-                //printf("GTOKEN: %.*s    RE: %s\n", length, this->pattern+offset, this->regEx);
                 break;
             }
             default:
-                //printf("DEFAULT: %.*s    RE: %s\n", length, this->pattern+offset, this->regEx);
                 break;
         }
         currentSegment += 1;

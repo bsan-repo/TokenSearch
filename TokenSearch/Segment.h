@@ -11,8 +11,6 @@
 
 #include <iostream>
 
-
-
 class Segment{
 protected:
     int type;
